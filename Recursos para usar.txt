@@ -1,0 +1,13 @@
+**Escribid aquí las cosas que podrían ser de interés para el proyecto
+
+El link de la página oficial de la API:
+https://www.thecocktaildb.com/
+
+Una view random de la página:
+https://www.thecocktaildb.com/drink/11006-Daiquiri-Cocktail
+
+Una view random de la API:
+https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007
+
+Herramienta para hacer las capturas de pantalla de la Play Store:
+https://developer.android.com/distribute/marketing-tools/device-art-generator

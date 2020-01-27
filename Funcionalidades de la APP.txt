@@ -1,0 +1,18 @@
+**Aquí se escriben las funcionalidades referentes a la API que va a tener
+ la app en la versión Alpha 1.0
+
+-Buscar todas las bebidas alcoholicas disponibles (menu)
+-Una view igual que busque todas las bebidas no alcoholicas (menu)
+-Una view que te redirecccione a una view con la info de un cocktail con una ID aleatoria. (menu)
+-Una view con todas las bebidas que el usuario halla marcado como favoritas. (menu)
+-Cuando se seleccione una bebida de la lista, crear una view con toda la información de ésta.
+
+
+
+**Aquí van las futuras inplementaciones para la fase final del proyecto
+
+-Un boton de busqueda que direccione a una view con opciones busqueda avanzada.
+-colocar links de amazon a cada ingrediente.
+-botones para compartir el cocktail en twitter, facebook, etc.
+
+

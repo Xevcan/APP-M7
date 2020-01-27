@@ -1,0 +1,11 @@
+Para la página de inicio que muestra todas las bebidas -- Grid, Twoline.
+
+Carga entre los fragmentos -- Progress Activity, Dots Fade.
+
+Los mensajes de error o acción(Toast) -- Snackbars&Toast, Toast Custom.
+
+El menu para navegar entre los fragments -- ButtonNavigation, Shifting.
+
+Para los artículo individuales y el menu de "Bebida aleatoria" -- Cards, Overlapse.
+
+** Recordatorio: usar la versión Material X 2.5 por que la anterior da problemas al descargar.
