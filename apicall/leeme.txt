@@ -1,0 +1,9 @@
+Todo el contenido son las clases necesarias para la llamada a la API y lo necesario para el aspecto del RecyclerView
+
+IMPORTANTE: Tendréis que cambiar el nombre del package en las clases por el vuestro
+
+Librerias necesarias a implementar:
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.balysv:material-ripple:1.0.2'
