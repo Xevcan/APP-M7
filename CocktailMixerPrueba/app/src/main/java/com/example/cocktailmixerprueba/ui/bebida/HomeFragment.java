@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cocktailmixerprueba.R;
+import com.example.cocktailmixerprueba.adapter.Drink;
 import com.example.cocktailmixerprueba.adapter.DrinkAdapter;
+import com.example.cocktailmixerprueba.adapter.DrinkList;
 import com.example.cocktailmixerprueba.api.GetDrinkDataService;
 import com.example.cocktailmixerprueba.api.RetrofitInstance;
-import com.example.cocktailmixerprueba.adapter.Drink;
-import com.example.cocktailmixerprueba.adapter.DrinkList;
 import com.example.cocktailmixerprueba.utils.Tools;
 import com.example.cocktailmixerprueba.widget.SpacingItemDecoration;
 
@@ -31,9 +31,10 @@ public class HomeFragment extends Fragment {
 
     View view;
     RecyclerView rvBebidas;
-    DrinkAdapter adapter;
+    public static DrinkAdapter adapter;
     String tipoBebida;
     Call<DrinkList> call;
+    public static boolean buscar = false;
 
     public HomeFragment() {
     }
@@ -75,7 +76,11 @@ public class HomeFragment extends Fragment {
         call.enqueue(new Callback<DrinkList>() {
             @Override
             public void onResponse(Call<DrinkList> call, Response<DrinkList> response) {
-                generateDrinkList(response.body().getDrinkArrayList());
+
+                if (response.isSuccessful()) {
+                    generateDrinkList(response.body().getDrinkArrayList());
+                    buscar = true;
+                }
             }
 
             @Override
@@ -89,7 +94,7 @@ public class HomeFragment extends Fragment {
     private void generateDrinkList(ArrayList<Drink> drinkDataList) {
         rvBebidas = view.findViewById(R.id.rvBebidas);
 
-        adapter = new DrinkAdapter(drinkDataList, getContext());
+        adapter = new DrinkAdapter(drinkDataList, getActivity());
 
         // Cambiar el RecyclerView para que sea como Grid de MaterialX
         rvBebidas.setLayoutManager(new GridLayoutManager(getContext(), 2));

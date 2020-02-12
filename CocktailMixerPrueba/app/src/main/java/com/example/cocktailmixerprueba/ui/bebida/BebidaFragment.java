@@ -1,9 +1,7 @@
 package com.example.cocktailmixerprueba.ui.bebida;
 
-import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +12,11 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.cocktailmixerprueba.R;
 import com.example.cocktailmixerprueba.adapter.DrinkList;
 import com.example.cocktailmixerprueba.api.GetDrinkDataService;
 import com.example.cocktailmixerprueba.api.RetrofitInstance;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,6 +25,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BebidaFragment extends Fragment {
+
+    private static final String ARG_TIPO_BEBIDA = "tipo_bebida";
 
     View view;
     TextView tvID;
@@ -39,6 +39,26 @@ public class BebidaFragment extends Fragment {
     ImageView imBebida;
     ImageView imIcono;
     LinearLayout llvIngredientes;
+    String tipoBebida;
+
+    public BebidaFragment() {
+    }
+
+    public static BebidaFragment newInstance(String tipoBebida) {
+        BebidaFragment fragment = new BebidaFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_TIPO_BEBIDA, tipoBebida);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            tipoBebida = getArguments().getString(ARG_TIPO_BEBIDA);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,9 +87,14 @@ public class BebidaFragment extends Fragment {
         imBebida = view.findViewById(R.id.imBebida);
         imIcono = view.findViewById(R.id.imIcono);
 
-
         GetDrinkDataService service = RetrofitInstance.getRetrofitInstance().create(GetDrinkDataService.class);
-        Call<DrinkList> call = service.getDrink(idBebida);
+        Call<DrinkList> call;
+
+        if (tipoBebida.equalsIgnoreCase("Random")) {
+            call = service.getRandomDrink();
+        } else {
+            call = service.getDrink(idBebida);
+        }
 
         call.enqueue(new Callback<DrinkList>() {
             @Override
@@ -92,11 +117,11 @@ public class BebidaFragment extends Fragment {
 
                     //Para las imagenes usar picasso
                     String imagenURL = response.body().getDrinkArrayList().get(0).getStrDrinkThumb();
-                    Picasso.get().load(imagenURL).into(imBebida);
+                    Glide.with(getContext()).load(imagenURL).into(imBebida);
 
 
                     //Cambiar el icono en el caso de que sea aloholica o no
-                    if (alcoholic.equals("Non alcoholic")){
+                    if (alcoholic.equals("Non alcoholic")) {
                         imIcono.setImageResource(R.drawable.noalcohol2);
                     }
 
@@ -156,7 +181,7 @@ public class BebidaFragment extends Fragment {
                     arrayMedidas.add(medida12);
 
 
-                    for (int i = 0; i<12;i++) {
+                    for (int i = 0; i < 12; i++) {
 
                         if (arrayIngredientes.get(i) != null) {
                             LinearLayout linearLayout = new LinearLayout(getContext());
@@ -172,7 +197,6 @@ public class BebidaFragment extends Fragment {
                             llvIngredientes.addView(linearLayout);
                         }
                     }
-
 
 
                 } else {

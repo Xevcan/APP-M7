@@ -29,12 +29,12 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.cocktailmixerprueba.ui.bebida.HomeFragment"
+        android:name="com.example.cocktailmixerprueba.ui.bebida.BebidaFragment"
         android:label="@string/titulo_random"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_bebida">
         <argument
             android:name="tipo_bebida"
-            app:argType="string"
-            android:defaultValue="Random" />
+            android:defaultValue="Random"
+            app:argType="string" />
     </fragment>
 </navigation>
