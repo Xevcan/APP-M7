@@ -9,6 +9,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -110,13 +111,13 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
         public void onClick(View v) {
 
             int posicion = getAdapterPosition();
-            String id = arrayListDrink.get(posicion).getIdDrink();
+            String id = arrayListFiltro.get(posicion).getIdDrink();
 
             Bundle bundle = new Bundle();
             bundle.putString("ID", id); // set your parameteres
             bundle.putString("tipo_bebida", "Non_Random");
 
-            BebidaFragment bebidaFragment = new BebidaFragment();
+            Fragment bebidaFragment = new BebidaFragment();
             bebidaFragment.setArguments(bundle);
 
             FragmentManager fragmentManager = context.getSupportFragmentManager();
