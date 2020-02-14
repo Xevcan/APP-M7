@@ -1,10 +1,14 @@
 <resources>
+    <!-- TODO: General-->
     <string name="app_name">Cocktail Mixer</string>
     <string name="titulo_alcoholicas">Alcoholics</string>
     <string name="titulo_noalcoholicas">Non Alcoholic</string>
     <string name="titulo_random">Random</string>
     <string name="action_settings">About</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: About -->
+    <string name="about_localizacion">Reus, Catalonia, Spain</string>
+    <string name="about_authors">Authors</string>
+    <string name="about_companies">Companies</string>
+    <string name="version">Version</string>
 </resources>
