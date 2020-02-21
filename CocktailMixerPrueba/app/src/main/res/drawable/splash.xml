@@ -4,6 +4,6 @@
     <item
         android:width="256dp"
         android:height="256dp"
-        android:drawable="@android:drawable/star_big_on"
+        android:drawable="@drawable/screensaverbig"
         android:gravity="center" />
 </layer-list>
