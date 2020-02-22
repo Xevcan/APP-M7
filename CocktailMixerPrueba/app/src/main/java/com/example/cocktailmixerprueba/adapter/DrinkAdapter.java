@@ -9,15 +9,12 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.cocktailmixerprueba.R;
-import com.example.cocktailmixerprueba.ui.bebida.BebidaFragment;
 
 import java.util.ArrayList;
 
@@ -26,11 +23,13 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
     private ArrayList<Drink> arrayListDrink;
     private ArrayList<Drink> arrayListFiltro;
     private FragmentActivity context;
+    private String tipo;
 
-    public DrinkAdapter(ArrayList<Drink> dataList, FragmentActivity context) {
+    public DrinkAdapter(ArrayList<Drink> dataList, FragmentActivity context, String tipo) {
         this.arrayListDrink = dataList;
         this.arrayListFiltro = dataList;
         this.context = context;
+        this.tipo = tipo;
     }
 
     @Override
@@ -117,15 +116,21 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkAdapter.DrinkViewHol
             bundle.putString("ID", id); // set your parameteres
             bundle.putString("tipo_bebida", "Non_Random");
 
-            Fragment bebidaFragment = new BebidaFragment();
-            bebidaFragment.setArguments(bundle);
+            if (tipo.equalsIgnoreCase("Alcoholic")) {
+                Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_placeholder, bundle);
+            } else if (tipo.equalsIgnoreCase("Non_Alcoholic")) {
+                Navigation.findNavController(v).navigate(R.id.action_navigation_dashboard_to_placeholder, bundle);
+            }
 
-            FragmentManager fragmentManager = context.getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction
-                    .replace(R.id.nav_host_fragment, bebidaFragment)
-                    .addToBackStack(null)
-                    .commit();
+//            Fragment bebidaFragment = new BebidaFragment();
+//            bebidaFragment.setArguments(bundle);
+//
+//            FragmentManager fragmentManager = context.getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            fragmentTransaction
+//                    .replace(R.id.nav_host_fragment, bebidaFragment)
+//                    .addToBackStack(null)
+//                    .commit();
         }
     }
 }

@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_alcoholic"
         android:icon="@drawable/ic_alcoholic"
         android:title="@string/titulo_alcoholicas" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_non_alcoholic"
         android:icon="@drawable/ic_nonalcoholic"
         android:title="@string/titulo_noalcoholicas" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_random"
         android:icon="@drawable/ic_random"
         android:title="@string/titulo_random" />
 

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_alcoholic">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_alcoholic"
         android:name="com.example.cocktailmixerprueba.ui.bebida.HomeFragment"
         android:label="@string/titulo_alcoholicas"
         tools:layout="@layout/fragment_home">
@@ -14,10 +14,16 @@
             android:name="tipo_bebida"
             android:defaultValue="Alcoholic"
             app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_home_to_placeholder"
+            app:destination="@id/navigation_bebidas" >
+            <argument android:defaultValue="Alcoholic"
+                android:name="tipo_bebida" />
+        </action>
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_non_alcoholic"
         android:name="com.example.cocktailmixerprueba.ui.bebida.HomeFragment"
         android:label="@string/titulo_noalcoholicas"
         tools:layout="@layout/fragment_home">
@@ -25,10 +31,16 @@
             android:name="tipo_bebida"
             android:defaultValue="Non_Alcoholic"
             app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_placeholder"
+            app:destination="@id/navigation_bebidas" >
+            <argument android:defaultValue="Non_Alcoholic"
+                android:name="tipo_bebida" />
+        </action>
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_random"
         android:name="com.example.cocktailmixerprueba.ui.bebida.BebidaFragment"
         android:label="@string/titulo_random"
         tools:layout="@layout/fragment_bebida">
@@ -36,5 +48,14 @@
             android:name="tipo_bebida"
             android:defaultValue="Random"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_bebidas"
+        android:name="com.example.cocktailmixerprueba.ui.bebida.BebidaFragment"
+        tools:layout="@layout/fragment_bebida" >
+        <argument
+            android:name="tipo_bebida"
+            app:argType="string"
+            android:defaultValue="Alcoholic" />
     </fragment>
 </navigation>

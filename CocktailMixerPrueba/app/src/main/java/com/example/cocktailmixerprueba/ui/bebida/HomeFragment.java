@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
     private void generateDrinkList(ArrayList<Drink> drinkDataList) {
         rvBebidas = view.findViewById(R.id.rvBebidas);
 
-        adapter = new DrinkAdapter(drinkDataList, getActivity());
+        adapter = new DrinkAdapter(drinkDataList, getActivity(), tipoBebida);
 
         // Cambiar el RecyclerView para que sea como Grid de MaterialX
         rvBebidas.setLayoutManager(new GridLayoutManager(getContext(), 2));
